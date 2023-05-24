@@ -3,3 +3,52 @@
 body {
 	font-family: "Roboto", sans-serif;
 }
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(255, 68, 0, 0.801);
+}
+h1 a {
+	text-decoration: none;
+	color: rgba(0, 0, 0, 0.897);
+}
+ul li {
+	list-style: none;
+}
+
+ul li a {
+	text-decoration: none;
+	color: rgba(0, 0, 0, 0.849);
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 10px;
+}
+
+.grid-item {
+	width: 70%;
+}
+
+.grid-item img {
+	width: 100%;
+	height: auto;
+}
+
+button {
+	background-color: rgba(255, 68, 0, 0.801);
+	margin: 1rem;
+	padding: 1rem 1rem;
+	border-radius: 10px;
+	cursor: pointer;
+
+}
+figcaption {text-align: center;
+}
+.mine {
+	display: flex;
+	justify-content: flex-end;
+    
+}
