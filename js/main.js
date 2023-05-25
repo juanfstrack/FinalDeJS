@@ -1,58 +1,49 @@
-window.addEventListener('DOMContentLoaded', () => {
-    const procesadores = [
-        {
-            "id": 1,
-            "nombre": "PROCESADOR 1",
-            "precio": 60.000,
-            "imagen": "./IMG/1.webp"
-        },
-    
-        {
-            "id": 2,
-            "nombre": "PROCESADOR 2",
-            "precio": 60.000,
-            "imagen": "./IMG/2.webp"
-        },
-        {
-            "id": 3,
-            "nombre": "PROCESADOR 3",
-            "precio": 60.000,
-            "imagen": "./IMG/3.webp"
-        },
-    
-        {
-            "id": 4,
-            "nombre": "PROCESADOR 4",
-            "precio": 60.000,
-            "imagen": "./IMG/4.webp"
-        },
-        {
-            "id": 5,
-            "nombre": "PROCESADOR 5",
-            "precio": 60.000,
-            "imagen": "./IMG/5.webp"
-        },
-        {
-            "id": 6,
-            "nombre": "PROCESADOR 6",
-            "precio": 60.000,
-            "imagen": "./IMG/6.webp"
-        },
-        {
-            "id": 7,
-            "nombre": "PROCESADOR 7",
-            "precio": 60.000,
-            "imagen": "./IMG/7.webp"
-        },
-        {
-            "id": 8,
-            "nombre": "PROCESADOR 8",
-            "precio": 60.000,
-            "imagen": "./IMG/8.webp"
+let carrito = [];
+let procesadores = [];
+
+const addProductoCarrito = (e) => {
+    // Filtramos el producto seleccionado y lo agregamos al carrito
+    const selected = procesadores.filter(procesador=>procesador.id == e.target.id);
+    const exist = carrito.find(producto=>producto.id == selected[0].id);
+    if(!exist){
+        const nuevoProducto = {
+            ...selected[0],
+            cantidad: 1,
         }
-    ]
-    
-    const container = document.getElementById('Cart-container');
+        carrito.push(nuevoProducto);
+    }else{
+        const index = carrito.findIndex(producto=>producto.id == selected[0].id);
+        carrito[index].cantidad++;
+    }
+
+    // Actializamos en el DOM
+    const cant = document.getElementById("cantidad");
+    cant.innerText = carrito.length;
+    Toastify({
+        text: "Se ha agregado el producto al carrito correctamente!",
+        duration: 3000,
+        destination: "http://127.0.0.1:5500/pages/carrito.html",
+        newWindow: false,
+        close: false,
+        gravity: "top",
+        position: "left",
+        stopOnFocus: true,
+        style: {
+          background: "green",
+        },
+        onClick: function(){} // Callback after click
+      }).showToast();
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+    const getData = async () => {
+        const data = await fetch("../productos.json");
+        const productos = await data.json();
+        procesadores = productos;
+    }
+    await getData();
+
+    const container = document.getElementById('cart-container');
 
     procesadores.forEach((procesador) => {
         const div = document.createElement('div');
@@ -71,7 +62,9 @@ window.addEventListener('DOMContentLoaded', () => {
         title.textContent = procesador.nombre;
 
         const button = document.createElement('button');
+        button.id = procesador.id;
         button.textContent = 'AGREGAR';
+        button.onclick = addProductoCarrito;
 
         div.appendChild(img);
         div.appendChild(price);

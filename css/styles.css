@@ -60,3 +60,9 @@ button {
 	justify-content: flex-end;
 	margin: 5px;
 }
+.mine *{
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 30px;
+}
