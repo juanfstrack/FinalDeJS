@@ -6,8 +6,11 @@ body {
 .header {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	background-color: rgba(255, 68, 0, 0.801);
+	margin: 10px;
+	padding: 20px;
+	border-radius: 15px;
 }
 h1 a {
 	text-decoration: none;
@@ -15,11 +18,15 @@ h1 a {
 }
 ul li {
 	list-style: none;
+	margin: 10px;
+	font-size: 20px;
+
 }
 
 ul li a {
 	text-decoration: none;
 	color: rgba(0, 0, 0, 0.849);
+	margin: 10px;
 }
 
 .grid-container {
@@ -29,7 +36,8 @@ ul li a {
 }
 
 .grid-item {
-	width: 70%;
+	width: 100%;
+	
 }
 
 .grid-item img {
@@ -43,12 +51,12 @@ button {
 	padding: 1rem 1rem;
 	border-radius: 10px;
 	cursor: pointer;
+	color: rgb(240, 248, 255);
+	width: 70%;
+}
 
-}
-figcaption {text-align: center;
-}
 .mine {
 	display: flex;
 	justify-content: flex-end;
-    
+	margin: 5px;
 }
