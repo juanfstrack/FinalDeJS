@@ -1,6 +1,6 @@
 # FinalDeJS
 Reentrega del final de Js
-Abarcamos las siguientes cosnignas:
+Abarcamos las siguientes consignas:
 **Objetos y Arrays. metodos de arrays** 
 **funciones y condicionales **
 **generacion del DOM de forma dinamica . Eventos**
